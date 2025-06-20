@@ -64,7 +64,7 @@ const generateAiImages = async (userPrompt, userImgQuantity) => {
       body: JSON.stringify({
         prompt: userPrompt,
         n: userImgQuantity,
-        size: "512x512",
+        size: "1280x720", //720p
         response_format: "b64_json"
       }),
     });
@@ -75,6 +75,7 @@ const generateAiImages = async (userPrompt, userImgQuantity) => {
     const { data } = await response.json(); // Get data from the response
     updateImageCard([...data]);
   } catch (error) {
+    console.log("Error:", error.message);
     alert(error.message);
   } finally {
     generateBtn.removeAttribute("disabled");
